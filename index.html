@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <title>Uol</title>
+    </head>
+    
+    
+    <body>
+
+        <header>
+            <img src="imagens/logo 1.png" alt="logo">
+            <ion-icon id="icon1" name="people-sharp"></ion-icon>
+        </header>
+
+        <main>
+            <ul>
+                <!-- MESSAGE WHEN SOMEONE ENTER OR LEAVE THE GROUP -->
+                <li class="enter-leave-group">
+                    <span><span class="time">(09:21:45)</span> <span class="name"> João </span> entra na sala...</span>
+                </li>
+                
+                <!-- MESSAGE FOR EVERYBODY -->
+                <li class="msg-everybody">
+                    <span><span class="time">(09:21:45)</span> <span class="name"> João </span>para <span class="name">Todos:</span> mensagem aqui!!!</span>
+                </li>
+                <!-- MESSAGE EXCLUSIVE -->
+                <!-- <li class="msg-exclusive">
+                    <span><span class="time">(09:21:45)</span> <span class="name"> João </span>reservadamente para <span class="name">Maria:</span> oi gatinha quer tc?</span>
+                </li> -->
+            </ul>
+            
+               
+
+        </main>
+
+        <footer>
+            <input id="msg" type="text">
+            <ion-icon id="icon2" name="paper-plane-outline" onclick="enviaMsg()"></ion-icon>
+        </footer>
+
+
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+        <script src="script.js"></script>
+    </body>
+</html>

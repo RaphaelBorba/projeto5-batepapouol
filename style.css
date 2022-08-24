@@ -1,0 +1,95 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+body{
+    width: 375px;
+    height: 667px;
+    border: 1px solid black;
+    background-color: #F3F3F3;
+    position: relative;
+}
+
+
+/* HEADER */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    height: 80px;
+    padding: 0 22px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+#icon1{
+    font-size: 42px;
+}
+
+
+
+
+/* TEXTS */
+.time{
+    font-weight: 500;
+    color: #aaaaaa;
+}
+.name{
+    font-weight: bold;
+}
+
+
+/* MESSAGES */
+ul{
+    width: 100%;
+    height: 500px;
+    overflow: scroll;
+    padding-top: 24px;
+}
+li{
+    
+    min-height: 40px;
+    line-height: 20px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 2px 0;
+}
+.enter-leave-group{
+    background: #DCDCDC;
+}
+.msg-everybody{
+    background-color: white;
+}
+.msg-exclusive{
+    background-color:#FFDEDE;
+}
+
+/* FOOTER */
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    height: 80px;
+    padding: 0 22px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+#icon2{
+    font-size: 26px;
+}
+footer input{
+    width: 250px;
+    height: 50px;
+    
+}
+
