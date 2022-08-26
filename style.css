@@ -58,6 +58,7 @@ li{
     align-items: center;
     padding: 10px;
     margin: 2px 0;
+    overflow: hidden;
 }
 .enter-leave-group{
     background: #DCDCDC;
@@ -68,7 +69,13 @@ li{
 .msg-exclusive{
     background-color:#FFDEDE;
 }
-
+#icon3{
+    position: absolute;
+    bottom: 90px;
+    right: 10px;
+    z-index: 10;
+    font-size: 40px;
+}
 /* FOOTER */
 
 footer{

@@ -1,4 +1,4 @@
-
+/* FUNCTION THAT START THE SITE */
 
 const startWeb = (dado)=>{
     
@@ -35,6 +35,8 @@ const startWeb = (dado)=>{
     }, 5000)
 }
 
+/* FUNCTION TO ASK NAME */
+
 const askName = ()=>{
     let name = prompt('Digite seu nome:')
     return name
@@ -45,9 +47,12 @@ const askName = ()=>{
 const promessa  = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants')
 promessa.then(startWeb)
 
+/* FUNCTION TO MAKE THE MESSAGES */
+
 const showMessages =(dado)=>{
     let data = dado.data
     let ul = document.querySelector('ul')
+    ul.innerHTML=''
 
     for(let i =0; i<data.length;i++){
 
@@ -57,9 +62,10 @@ const showMessages =(dado)=>{
 
             <li class="enter-leave-group">
                 <span><span class="time">(${data[i].time})</span> <span class="name"> ${data[i].from} </span> ${data[i].text}</span>
-            </li>
-`
+            </li>`
+
         }else if(data[i].type === 'message'){
+
             ul.innerHTML+=`
            
             <li class="msg-everybody">
@@ -69,10 +75,19 @@ const showMessages =(dado)=>{
     }
 }
 
+/* FUNCTION TO LOAD THE MESSAGES */
+
 const loadMessages = ()=>{
     const promesse = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages')
     promesse.then(showMessages)
-
 }
-loadMessages()
 
+/* LOAD THE MESSAGES INTO TO UL */
+
+setInterval(loadMessages, 3000)
+
+/* FUNCTION TO SCROLL THE VIEW TO BOTTOM */
+
+const scrollView = ()=>{
+    document.querySelector('ul').lastChild.scrollIntoView()
+}
