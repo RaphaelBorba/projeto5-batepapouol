@@ -1,3 +1,6 @@
+
+let userName
+
 /* FUNCTION THAT START THE SITE */
 
 const startWeb = (dado)=>{
@@ -27,6 +30,8 @@ const startWeb = (dado)=>{
         name: name
     })
 
+    userName= name;
+
     /* CHECKS IF THE USER KEEPS ONLINE EVERY 5 SEG */
     setInterval(()=>{
         axios.post('https://mock-api.driven.com.br/api/v6/uol/status',{
@@ -48,6 +53,8 @@ const promessa  = axios.get('https://mock-api.driven.com.br/api/v6/uol/participa
 promessa.then(startWeb)
 
 /* FUNCTION TO MAKE THE MESSAGES */
+
+let i=0
 
 const showMessages =(dado)=>{
     let data = dado.data
@@ -73,6 +80,10 @@ const showMessages =(dado)=>{
             </li>`
         }
     }
+    if (i===0){
+        ul.lastChild.scrollIntoView();
+        i++
+    }
 }
 
 /* FUNCTION TO LOAD THE MESSAGES */
@@ -86,8 +97,40 @@ const loadMessages = ()=>{
 
 setInterval(loadMessages, 3000)
 
-/* FUNCTION TO SCROLL THE VIEW TO BOTTOM */
+
+
+/* FUNCTION ONCLICK TO SCROLL THE VIEW TO BOTTOM */
 
 const scrollView = ()=>{
     document.querySelector('ul').lastChild.scrollIntoView()
 }
+
+/* FUNCTION ONCLICK TO SEND MESSAGE TO API */
+
+const sendMessage = ()=>{
+
+    let msg = document.querySelector('#msg').value;
+
+    const promese = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages',{
+        from: userName,
+        to: 'Todos',
+        text: msg,
+        type: 'message'
+    })
+    
+    promese.then(loadMessages)
+    promese.catch((er)=>{
+        let erro = er.response.status
+        alert(`Erro! Não é possivel enviar mensagem vazia!`)
+    })
+    document.querySelector('#msg').value = ''
+}
+
+/* PRESS ENTER FUNCTION */
+
+document.addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter'){
+        const but = document.querySelector('#sendBtn')
+        but.click()
+    }
+})

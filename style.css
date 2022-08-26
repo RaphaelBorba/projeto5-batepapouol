@@ -41,7 +41,6 @@ header{
     font-weight: bold;
 }
 
-
 /* MESSAGES */
 ul{
     width: 100%;
@@ -58,7 +57,7 @@ li{
     align-items: center;
     padding: 10px;
     margin: 2px 0;
-    overflow: hidden;
+    word-break: break-word;
 }
 .enter-leave-group{
     background: #DCDCDC;
@@ -91,8 +90,9 @@ footer{
     bottom: 0;
     left: 0;
 }
-#icon2{
+#sendBtn{
     font-size: 26px;
+    margin-right: 15px;
 }
 footer input{
     width: 250px;
