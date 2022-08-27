@@ -16,7 +16,7 @@ const startWeb = (dado)=>{
         
             if(name === arrayNames[i].name || name.length ===0){
         
-                alert('Nome repetido')
+                alert('Nome repetido ou em branco')
         
                 name = askName()
                 deny=1
