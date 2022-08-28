@@ -1,56 +1,39 @@
 
 let userName
 
-/* FUNCTION THAT START THE SITE */
+/* FUNCTION THAT CHECKS IF THE USER NAME CAN BE USE OR DON'T*/
 
-const startWeb = (dado)=>{
+const startWeb = ()=>{
     
-    let name = askName()
-    let arrayNames = dado.data
-
-    while(true){
-
-        let deny=0
-
-        for(let i = 0; i<arrayNames.length; i++){
-        
-            if(name === arrayNames[i].name || name.length ===0){
-        
-                alert('Nome repetido ou em branco')
-        
-                name = askName()
-                deny=1
-            }
-        }
-        if(deny ===0){
-            break;
-        }
-    }
+    let name = document.querySelector('#user-name').value;
+    
     const promesse = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants ',{
         name: name
     })
-
-    userName= name;
-
-    /* CHECKS IF THE USER KEEPS ONLINE EVERY 5 SEG */
-    setInterval(()=>{
-        axios.post('https://mock-api.driven.com.br/api/v6/uol/status',{
-        name: name
+    promesse.catch((err)=>{
+        let erro = err.response.status;
+        alert('Nome repetido ou em branco.')
     })
-    }, 5000)
+
+    
+
+    
+    promesse.then(()=>{
+        userName= name;
+
+        /* DELETE THE INITIAL SCREEN */
+        let delScreen = document.querySelector('.initial-screen')
+        delScreen.parentNode.removeChild(delScreen)
+
+        /* CHECKS IF THE USER KEEPS ONLINE EVERY 5 SEC */
+        setInterval(()=>{
+            axios.post('https://mock-api.driven.com.br/api/v6/uol/status',{
+            name: name
+        })
+        }, 5000)
+    })
+    
 }
-
-/* FUNCTION TO ASK NAME */
-
-const askName = ()=>{
-    let name = prompt('Digite seu nome:')
-    return name
-}
-
-/* START THE SITE */
-
-const promessa  = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants')
-promessa.then(startWeb)
 
 /* FUNCTION TO MAKE THE MESSAGES */
 
@@ -71,7 +54,7 @@ const showMessages =(dado)=>{
                 <span><span class="time">(${data[i].time})</span> <span class="name"> ${data[i].from} </span> ${data[i].text}</span>
             </li>`
 
-        }else if(data[i].type === 'message'){
+        }else if(data[i].type === 'message' && (data[i].to === 'Todos' || data[i].to === userName)){
 
             ul.innerHTML+=`
            
