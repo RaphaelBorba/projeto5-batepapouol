@@ -81,7 +81,6 @@ const loadMessages = ()=>{
 setInterval(loadMessages, 3000)
 
 
-
 /* FUNCTION ONCLICK TO SCROLL THE VIEW TO BOTTOM */
 
 const scrollView = ()=>{
